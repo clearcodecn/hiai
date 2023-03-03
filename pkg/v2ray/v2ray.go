@@ -32,7 +32,10 @@ func InitClient(addr string) {
 }
 
 func CreateUser(ctx context.Context, tag string, username string) (string, error) {
-	uid := uuid.New().String()
+	uid, _ := QueryUUID(username)
+	if uid == "" {
+		uid = uuid.New().String()
+	}
 	err := createUserGRPC(username, uid, tag)
 	if err != nil {
 		log.Println("[CreateUser] 创建用户失败: ", username, uid)

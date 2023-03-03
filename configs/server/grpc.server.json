@@ -114,7 +114,16 @@
           "openaiapi-site.azureedge.net",
           "regexp:\\.bing*",
           "domain:bing.com",
-          "regexp:\\.openai*"
+          "domain:hi-ai.top",
+          "regexp:\\.openai*",
+          "keyword:openai",
+          "keyword:hi-ai",
+          "keyword:bing",
+          "domain:openaicomproductionae4b.blob.core.windows.net",
+          "domain:github.githubassets.com",
+          "domain:production-openaicom-storage.azureedge.net",
+          "domain:openaicom.imgix.net",
+          "domain:o1272610.ingest.sentry.io"
         ],
         "outboundTag": "direct"
       },
