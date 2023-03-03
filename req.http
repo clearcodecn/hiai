@@ -36,4 +36,7 @@ POST https://proxy.hi-ai.top/api/register
 Content-Type: application/json
 Authorization: hiai
 
-{"username":"example1"}
+{"username":"example1@qq.com"}
+
+#### @no-cookie-jar
+GET https://proxy.hi-ai.top/link/example1@qq.com

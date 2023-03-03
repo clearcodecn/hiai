@@ -1,6 +1,7 @@
 package httpserver
 
 import (
+	"encoding/base64"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"ip-pool/pkg/global"
@@ -71,7 +72,7 @@ func queryUUID(ctx *gin.Context) {
 		return
 	}
 	uri := fmt.Sprintf(data, uuid)
-	vmess := fmt.Sprintf("vmess://%s", uri)
+	vmess := fmt.Sprintf("vmess://%s", base64.StdEncoding.EncodeToString([]byte(uri)))
 	ctx.String(200, vmess)
 }
 
