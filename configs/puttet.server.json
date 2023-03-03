@@ -1,0 +1,81 @@
+{
+  "log": {
+    "loglevel": "debug"
+  },
+  "inbounds": [
+    {
+      "port": 1081,
+      "protocol": "http",
+      "settings": {
+        "auth": "noauth",
+        "udp": true
+      }
+    },
+    {
+      "protocol": "shadowsocks",
+      "port": 9091,
+      "settings": {
+        "method": "aes-128-gcm",
+        "password": "password",
+        "network": "tcp,udp",
+        "level": 1,
+        "ota": false
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "blocked"
+    },
+    {
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "UseIP"
+      },
+      "tag": "direct"
+    }
+  ],
+  "dns": {
+    "servers": [
+      "https+local://8.8.8.8/dns-query",
+      "8.8.8.8",
+      "1.1.1.1",
+      "localhost"
+    ]
+  },
+  "routing": {
+    "domainStrategy": "IPOnDemand",
+    "rules": [
+      {
+        "type": "field",
+        "domain": [
+          "domain:openai.com"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "type": "field",
+        "ip": [
+          "geoip:private"
+        ],
+        "outboundTag": "blocked"
+      },
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "transport": {
+    "kcpSettings": {
+      "uplinkCapacity": 100,
+      "downlinkCapacity": 100,
+      "congestion": true
+    }
+  }
+}

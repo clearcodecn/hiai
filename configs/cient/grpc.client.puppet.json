@@ -9,10 +9,10 @@
         "vnext": [
           {
             "address": "195.245.242.102",
-            "port": 9001,
+            "port": 10080,
             "users": [
               {
-                "id": "15fb7342-33d2-47c9-99cb-e515b38b181b",
+                "id": "40de7000-64ff-4f6d-2588-90fdff855000",
                 "alterId": 0,
                 "security": "auto"
               }

@@ -29,3 +29,11 @@ Content-Type: application/json
 Authorization: hiai
 
 {"username":"example1"}
+
+###
+# @no-cookie-jar
+POST https://proxy.hi-ai.top/api/register
+Content-Type: application/json
+Authorization: hiai
+
+{"username":"example1"}
