@@ -4,6 +4,35 @@
     "error": "/var/log/v2ray/error.puppet.log",
     "loglevel": "info"
   },
+  "stats": {},
+  "api": {
+    "tag": "api",
+    "services": [
+      "HandlerService",
+      "LoggerService",
+      "StatsService",
+      "Routingservice"
+    ]
+  },
+  "policy": {
+    "levels": {
+      "0": {
+        "handshake": 4,
+        "connIdle": 300,
+        "uplinkOnly": 2,
+        "downlinkOnly": 5,
+        "statsUserUplink": true,
+        "statsUserDownlink": true,
+        "bufferSize": 10240
+      }
+    },
+    "system": {
+      "statsInboundUplink": true,
+      "statsInboundDownlink": true,
+      "statsOutboundUplink": true,
+      "statsOutboundDownlink": true
+    }
+  },
   "inbounds": [
     {
       "tag": "puttet",
@@ -14,7 +43,8 @@
           {
             "id": "40de7000-64ff-4f6d-2588-90fdff855000",
             "level": 2,
-            "alterId": 0
+            "alterId": 0,
+            "email": "default@gmail.com"
           }
         ]
       },
@@ -70,9 +100,21 @@
     "domainStrategy": "IPOnDemand",
     "rules": [
       {
+        "inboundTag":[
+          "api"
+        ],
+        "outboundTag":"api",
+        "type":"field"
+      },
+      {
         "type": "field",
         "domain": [
-          "domain:openai.com"
+          "domain:openai.com",
+          "cdn.auth0.com",
+          "openaiapi-site.azureedge.net",
+          "regexp:\\.bing*",
+          "domain:bing.com",
+          "regexp:\\.openai*"
         ],
         "outboundTag": "direct"
       },

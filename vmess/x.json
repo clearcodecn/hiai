@@ -1,0 +1,13 @@
+{
+  "v": "2",
+  "ps": "hi-ai.top",
+  "add": "test.hi-ai.top",
+  "port": "443",
+  "id": "40de7000-64ff-4f6d-2588-90fdff855000",
+  "aid": "0",
+  "net": "ws",
+  "type": "none",
+  "host": "test.hi-ai.top",
+  "path": "/puppet",
+  "tls": "tls"
+}

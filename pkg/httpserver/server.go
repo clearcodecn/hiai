@@ -1,6 +1,7 @@
 package httpserver
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"ip-pool/pkg/global"
 	"ip-pool/pkg/v2ray"
@@ -69,5 +70,22 @@ func queryUUID(ctx *gin.Context) {
 		ctx.String(200, "用户不存在")
 		return
 	}
-	ctx.String(200, uuid)
+	uri := fmt.Sprintf(data, uuid)
+	vmess := fmt.Sprintf("vmess://%s", uri)
+	ctx.String(200, vmess)
 }
+
+var data = `{
+  "v": "2",
+  "ps": "hi-ai.top",
+  "add": "test.hi-ai.top",
+  "port": "443",
+  "id": "%s",
+  "aid": "0",
+  "net": "ws",
+  "type": "none",
+  "host": "test.hi-ai.top",
+  "path": "/puppet",
+  "tls": "tls"
+}
+`

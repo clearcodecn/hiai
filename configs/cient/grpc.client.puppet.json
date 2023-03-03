@@ -14,7 +14,8 @@
               {
                 "id": "40de7000-64ff-4f6d-2588-90fdff855000",
                 "alterId": 0,
-                "security": "auto"
+                "security": "auto",
+                "email": "sys@gmail.com"
               }
             ]
           }

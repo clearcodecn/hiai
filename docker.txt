@@ -1,0 +1,4 @@
+docker run -it --rm -e V2RAY_API=localhost:10081 -e VECTOR_ADDR=localhost:9091 xmapst/v2ray-tracing
+
+
+docker run -p 19090:9090 -v ./prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
