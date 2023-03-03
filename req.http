@@ -1,0 +1,31 @@
+GET http://api.tq.roxlabs.cn/getProxyIp?num=12&return_type=txt&lb=4&sb=&flow=1&regions=us&protocol=http
+
+###
+GET https://gapi.roxlabs.cn/index/users/flow_balance?neek=32476&appkey=d0a6c7810958157b9092e02a27d45c13
+
+###
+GET http://api.tq.roxlabs.cn/getProxyIp?num=1&return_type=txt&lb=4&sb=&flow=1&regions=ph&protocol=http
+
+###
+GET http://api.tq.roxlabs.cn/getProxyIp?num=1&return_type=txt&lb=4&sb=&flow=1&regions=kr&protocol=http
+
+###
+GET http://api.tq.roxlabs.cn/getProxyIp?num=1&return_type=txt&lb=4&sb=&flow=1&regions=my&protocol=http
+
+###
+GET http://find.iphub.cc/find_http?key=75b958563fffc1f4&count=10&type=json&only=1&country=5194&textSep=3&pw=no
+
+
+###
+POST http://localhost:9123/api/register
+Content-Type: application/json
+Authorization: hiai
+
+{"username":"example1"}
+
+###
+POST http://localhost:9123/api/del
+Content-Type: application/json
+Authorization: hiai
+
+{"username":"example1"}

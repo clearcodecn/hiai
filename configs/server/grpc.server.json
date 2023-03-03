@@ -1,0 +1,171 @@
+{
+  "log": {
+    "access": "/var/log/v2ray/access.log",
+    "error": "/var/log/v2ray/error.log",
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "tag": "internal",
+      "port": 9999,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "40de7f63-64ff-4f6d-9588-90fdff85543e",
+            "level": 1,
+            "alterId": 0
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws"
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "tag": "puttet",
+      "port": 1008,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "40de7000-64ff-4f6d-9588-90fdff855000",
+            "level": 2,
+            "alterId": 0
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws"
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "listen": "0.0.0.0",
+      "port": 10081,
+      "protocol": "dokodemo-door",
+      "settings": {
+        "address": "0.0.0.0"
+      },
+      "tag": "api"
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "http",
+      "settings": {
+        "servers": [
+          {
+            "address": "45.143.235.138",
+            "port": 1081
+          }
+        ]
+      },
+      "tag": "puppet"
+    },
+    {
+      "type": "field",
+      "domain": [
+        "domain:openai.com"
+      ],
+      "outboundTag": "ipproxy"
+    },
+    {
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "UseIP"
+      },
+      "tag": "direct"
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "blocked"
+    }
+  ],
+  "dns": {
+    "servers": [
+      "https+local://dns.google/dns-query",
+      "8.8.8.8",
+      "1.1.1.1",
+      "localhost"
+    ]
+  },
+  "routing": {
+    "domainStrategy": "IPOnDemand",
+    "rules": [
+      {
+        "type": "field",
+        "ip": [
+          "geoip:private"
+        ],
+        "outboundTag": "blocked"
+      },
+      {
+        "type": "field",
+        "domain": [
+          "domain:epochtimes.com",
+          "domain:epochtimes.com.tw",
+          "domain:epochtimes.fr",
+          "domain:epochtimes.de",
+          "domain:epochtimes.jp",
+          "domain:epochtimes.ru",
+          "domain:epochtimes.co.il",
+          "domain:epochtimes.co.kr",
+          "domain:epochtimes-romania.com",
+          "domain:erabaru.net",
+          "domain:lagranepoca.com",
+          "domain:theepochtimes.com",
+          "domain:ntdtv.com",
+          "domain:ntd.tv",
+          "domain:ntdtv-dc.com",
+          "domain:ntdtv.com.tw",
+          "domain:minghui.org",
+          "domain:renminbao.com",
+          "domain:dafahao.com",
+          "domain:dongtaiwang.com",
+          "domain:falundafa.org",
+          "domain:wujieliulan.com",
+          "domain:ninecommentaries.com",
+          "domain:shenyun.com"
+        ],
+        "outboundTag": "blocked"
+      },
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      },
+      {
+        "inboundTag": "puppet",
+        "type": "field",
+        "domain": [
+          "domain:openai.com"
+        ],
+        "outboundTag": "puppet"
+      }
+    ]
+  },
+  "transport": {
+    "kcpSettings": {
+      "uplinkCapacity": 100,
+      "downlinkCapacity": 100,
+      "congestion": true
+    }
+  }
+}
