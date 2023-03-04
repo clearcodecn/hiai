@@ -15,47 +15,43 @@ func StartServer() {
 
 	api := g.Group("/api")
 	api.Use(func(ctx *gin.Context) {
-		if ctx.GetHeader("Authorization") != "hiai" {
+		if ctx.Query("token") != "ai" {
 			ctx.AbortWithStatus(403)
 			return
 		}
 		ctx.Next()
 	})
-	api.POST("/register", register)
+	api.GET("/register", register)
 	api.POST("/del", DelUser)
 	g.GET("/link/:username", queryUUID)
 
 	g.Run(":9123")
 }
 
-type RegisterRequest struct {
-	Username string `json:"username"`
-}
-
 func register(ctx *gin.Context) {
-	var req RegisterRequest
-	if err := ctx.BindJSON(&req); err != nil {
-		log.Println("[bind] err 400", err)
-		ctx.Error(err)
+	username := ctx.Query("username")
+	if username == "" {
+		ctx.AbortWithStatus(403)
 		return
 	}
-	id, err := v2ray.CreateUser(ctx.Request.Context(), global.UserTag, req.Username)
+	id, err := v2ray.CreateUser(ctx.Request.Context(), global.UserTag, username)
 	if err != nil {
 		log.Println("[v2ray.CreateUser] err", err)
 		ctx.Error(err)
 		return
 	}
-	ctx.JSON(200, gin.H{"status": 0, "id": id})
+	uri := fmt.Sprintf(data, id)
+	vmess := fmt.Sprintf("vmess://%s", base64.StdEncoding.EncodeToString([]byte(uri)))
+	ctx.String(200, vmess)
 }
 
 func DelUser(ctx *gin.Context) {
-	var req RegisterRequest
-	if err := ctx.BindJSON(&req); err != nil {
-		log.Println("[bind] err 400", err)
-		ctx.Error(err)
+	username := ctx.Query("username")
+	if username == "" {
+		ctx.AbortWithStatus(403)
 		return
 	}
-	err := v2ray.DelUser(ctx.Request.Context(), req.Username)
+	err := v2ray.DelUser(ctx.Request.Context(), username)
 	if err != nil {
 		log.Println("[v2ray.delUser] err", err)
 		ctx.Error(err)
