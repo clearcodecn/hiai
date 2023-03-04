@@ -8,11 +8,11 @@
       "settings": {
         "vnext": [
           {
-            "address": "195.245.242.102",
-            "port": 10080,
+            "address": "test.hi-ai.top",
+            "port": 443,
             "users": [
               {
-                "id": "cdc648fe-61b2-4cc2-bbda-abb3a895c46b",
+                "id": "b584a102-fb61-4797-a4dd-f4ccab495892",
                 "alterId": 0,
                 "security": "auto",
                 "email": "sys@gmail.com"

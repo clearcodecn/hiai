@@ -6,7 +6,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"ip-pool/pkg/global"
 	"ip-pool/pkg/v2ray"
+	"ip-pool/pkg/zipfile"
 	"log"
+	"os"
 	"strings"
 )
 
@@ -24,6 +26,8 @@ func StartServer() {
 	api.GET("/register", register)
 	api.POST("/del", DelUser)
 	g.GET("/link/:username", queryUUID)
+
+	g.GET("/download/:username", download)
 
 	g.Run(":9123")
 }
@@ -43,6 +47,29 @@ func register(ctx *gin.Context) {
 	uri := fmt.Sprintf(data, id)
 	vmess := fmt.Sprintf("vmess://%s", base64.StdEncoding.EncodeToString([]byte(uri)))
 	ctx.String(200, vmess)
+}
+
+func download(ctx *gin.Context) {
+	user := strings.TrimPrefix(ctx.Param("username"), "/")
+	if user == "" {
+		ctx.String(200, "参数错误")
+		return
+	}
+	uuid, err := v2ray.QueryUUID(user)
+	if err != nil || uuid == "" {
+		ctx.String(200, "用户不存在")
+		return
+	}
+	dst, err := zipfile.ZipFile("/tmp/data/v2ray", uuid)
+	if err != nil {
+		ctx.String(200, "服务器内部错误")
+		return
+	}
+	defer os.Remove(dst)
+	// 设置响应头
+	ctx.Header("Content-Disposition", "attachment; filename=v2rayN.zip")
+	ctx.Header("Content-Type", "application/zip")
+	ctx.File(dst)
 }
 
 func DelUser(ctx *gin.Context) {

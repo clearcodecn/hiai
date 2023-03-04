@@ -18,7 +18,7 @@ var (
 )
 
 func init() {
-	flag.StringVar(&tag, "tag", "puppet", "傀儡节点的puppet")
+	flag.StringVar(&tag, "tag", "puttet", "傀儡节点的puppet")
 	flag.StringVar(&serverAddr, "server", "195.245.242.102:10081", "服务器的端口")
 	flag.StringVar(&db, "db", "./user.db", "数据库文件")
 	flag.BoolVar(&logToFile, "l", false, "日志是否进入文件")

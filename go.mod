@@ -3,6 +3,7 @@ module ip-pool
 go 1.19
 
 require (
+	github.com/alexmullins/zip v0.0.0-20180717182244-4affb64b04d0
 	github.com/boltdb/bolt v1.3.1
 	github.com/gin-gonic/gin v1.9.0
 	github.com/google/uuid v1.3.0

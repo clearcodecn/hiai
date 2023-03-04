@@ -17,16 +17,13 @@ GET http://find.iphub.cc/find_http?key=75b958563fffc1f4&count=10&type=json&only=
 
 
 ###
-POST http://localhost:9123/api/register
-Content-Type: application/json
-Authorization: hiai
+GET http://localhost:9123/api/register?token=ai&username=aaa@qq.com
 
-{"username":"example1"}
 
 ###
-POST http://localhost:9123/api/del
+POST http://localhost:9123/api/del?token=ai
 Content-Type: application/json
-Authorization: hiai
+Authorization: ai
 
 {"username":"example1"}
 
@@ -40,3 +37,6 @@ Authorization: hiai
 
 #### @no-cookie-jar
 GET https://proxy.hi-ai.top/link/example1@qq.com
+
+###
+GET https://proxy.hi-ai.top/api/register?token=ai&username=admin1@qq.com
