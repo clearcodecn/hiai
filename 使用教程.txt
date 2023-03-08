@@ -1,0 +1,7 @@
+1. 解压出来，有一个文件 config.json
+2. 下载梯子, 地址是:
+
+https://wwxb.lanzoul.com/ieITT0pl9wve
+
+3. 解压梯子，并且把config.json 文件 复制到 v2ray 文件夹 .
+4. 点击 v2rayN.exe (蓝色图标文件) 运行插件即可.
