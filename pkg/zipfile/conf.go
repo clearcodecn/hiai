@@ -51,7 +51,7 @@ var conf = `{
       "settings": {
         "vnext": [
           {
-            "address": "test.hi-ai.top",
+            "address": "195.245.242.102",
             "port": 443,
             "users": [
               {
