@@ -23,7 +23,7 @@ func ZipFile(srcFile string, uid string) (string, error) {
 	dir := filepath.Join(tmpDir, uuid.New().String()+".zip")
 	c := fmt.Sprintf(conf, uid)
 
-	ioutil.WriteFile(filepath.Join(srcFile, "config.json"), []byte(c), 0666)
+	ioutil.WriteFile(filepath.Join(srcFile, "guiNConfig.json"), []byte(c), 0666)
 
 	if err := compressPathToZip(srcFile, dir); err != nil {
 		return "", err

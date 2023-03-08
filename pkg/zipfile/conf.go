@@ -1,155 +1,331 @@
 package zipfile
 
 var conf = `{
-  "log": {
-    "access": "",
-    "error": "",
-    "loglevel": "warning"
-  },
-  "inbounds": [
+  "logEnabled": false,
+  "loglevel": "warning",
+  "indexId": "4653921950098877425",
+  "muxEnabled": false,
+  "sysProxyType": 1,
+  "enableStatistics": false,
+  "keepOlderDedupl": false,
+  "statisticsFreshRate": 1,
+  "remoteDNS": null,
+  "domainStrategy4Freedom": null,
+  "defAllowInsecure": false,
+  "domainStrategy": "IPIfNonMatch",
+  "domainMatcher": null,
+  "routingIndex": 0,
+  "enableRoutingAdvanced": true,
+  "ignoreGeoUpdateCore": false,
+  "systemProxyExceptions": null,
+  "systemProxyAdvancedProtocol": null,
+  "autoUpdateInterval": 0,
+  "autoUpdateSubInterval": 0,
+  "checkPreReleaseUpdate": false,
+  "enableSecurityProtocolTls13": false,
+  "trayMenuServersLimit": 30,
+  "inbound": [
     {
-      "tag": "socks",
-      "port": 10808,
-      "listen": "127.0.0.1",
+      "localPort": 10808,
       "protocol": "socks",
-      "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls"
-        ]
-      },
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "allowTransparent": false
-      }
-    },
-    {
-      "tag": "http",
-      "port": 10809,
-      "listen": "127.0.0.1",
-      "protocol": "http",
-      "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls"
-        ]
-      },
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "allowTransparent": false
-      }
+      "udpEnabled": true,
+      "sniffingEnabled": true,
+      "allowLANConn": false,
+      "user": null,
+      "pass": null
     }
   ],
-  "outbounds": [
+  "vmess": [
     {
-      "tag": "proxy",
-      "protocol": "vmess",
-      "settings": {
-        "vnext": [
-          {
-            "address": "195.245.242.102",
-            "port": 443,
-            "users": [
-              {
-                "id": "%s",
-                "alterId": 0,
-                "security": "auto"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": false,
-          "serverName": "test.hi-ai.top"
+      "indexId": "4653921950098877425",
+      "configType": 1,
+      "configVersion": 2,
+      "sort": 0,
+      "address": "proxy.x.hi-ai.top",
+      "port": 443,
+      "id": "%s",
+      "alterId": 0,
+      "security": "auto",
+      "network": "ws",
+      "remarks": "hi-ai.top",
+      "headerType": "none",
+      "requestHost": "proxy.x.hi-ai.top",
+      "path": "/puppet",
+      "streamSecurity": "tls",
+      "allowInsecure": "False",
+      "testResult": "",
+      "subid": "",
+      "flow": "",
+      "sni": "",
+      "alpn": [],
+      "groupId": "",
+      "coreType": null,
+      "preSocksPort": 0,
+      "fingerprint": null
+    }
+  ],
+  "kcpItem": {
+    "mtu": 1350,
+    "tti": 50,
+    "uplinkCapacity": 12,
+    "downlinkCapacity": 100,
+    "congestion": false,
+    "readBufferSize": 2,
+    "writeBufferSize": 2
+  },
+  "subItem": [
+    {
+      "id": "5396092270645152360",
+      "remarks": "remarks",
+      "url": "https://hneko.xyz/api/v1/client/subscribe?token=6faea4ba221dc802f87e75f0b75c024e",
+      "enabled": true,
+      "userAgent": "",
+      "groupId": ""
+    }
+  ],
+  "uiItem": {
+    "enableAutoAdjustMainLvColWidth": true,
+    "mainLocation": "-1024, 529",
+    "mainSize": "968, 632",
+    "mainLvColWidth": {
+      "def": 25,
+      "configType": 182,
+      "remarks": 283,
+      "address": 319,
+      "port": 47,
+      "security": 60,
+      "network": 60,
+      "streamSecurity": 72,
+      "subRemarks": 61,
+      "testResult": 188
+    }
+  },
+  "routings": [
+    {
+      "remarks": "绕过大陆(Whitelist)",
+      "url": "",
+      "rules": [
+        {
+          "type": null,
+          "port": null,
+          "inboundTag": null,
+          "outboundTag": "direct",
+          "ip": null,
+          "domain": [
+            "domain:example-example.com",
+            "domain:example-example2.com"
+          ],
+          "protocol": null,
+          "enabled": true
         },
-        "wsSettings": {
-          "path": "/api",
-          "headers": {
-            "Host": "test.hi-ai.top"
-          }
+        {
+          "type": null,
+          "port": null,
+          "inboundTag": null,
+          "outboundTag": "block",
+          "ip": null,
+          "domain": [
+            "geosite:category-ads-all"
+          ],
+          "protocol": null,
+          "enabled": true
+        },
+        {
+          "type": null,
+          "port": null,
+          "inboundTag": null,
+          "outboundTag": "direct",
+          "ip": null,
+          "domain": [
+            "geosite:cn"
+          ],
+          "protocol": null,
+          "enabled": true
+        },
+        {
+          "type": null,
+          "port": null,
+          "inboundTag": null,
+          "outboundTag": "direct",
+          "ip": [
+            "geoip:private",
+            "geoip:cn"
+          ],
+          "domain": null,
+          "protocol": null,
+          "enabled": true
+        },
+        {
+          "type": null,
+          "port": "0-65535",
+          "inboundTag": null,
+          "outboundTag": "proxy",
+          "ip": null,
+          "domain": null,
+          "protocol": null,
+          "enabled": true
         }
-      },
-      "mux": {
-        "enabled": false,
-        "concurrency": -1
-      }
+      ],
+      "enabled": true,
+      "locked": false,
+      "customIcon": null
     },
     {
-      "tag": "direct",
-      "protocol": "freedom",
-      "settings": {}
+      "remarks": "黑名单(Blacklist)",
+      "url": "",
+      "rules": [
+        {
+          "type": null,
+          "port": null,
+          "inboundTag": null,
+          "outboundTag": "direct",
+          "ip": null,
+          "domain": null,
+          "protocol": [
+            "bittorrent"
+          ],
+          "enabled": true
+        },
+        {
+          "type": null,
+          "port": null,
+          "inboundTag": null,
+          "outboundTag": "block",
+          "ip": null,
+          "domain": [
+            "geosite:category-ads-all"
+          ],
+          "protocol": null,
+          "enabled": true
+        },
+        {
+          "type": null,
+          "port": null,
+          "inboundTag": null,
+          "outboundTag": "proxy",
+          "ip": [
+            "geoip:telegram"
+          ],
+          "domain": [
+            "geosite:gfw",
+            "geosite:greatfire",
+            "geosite:tld-!cn"
+          ],
+          "protocol": null,
+          "enabled": true
+        },
+        {
+          "type": null,
+          "port": "0-65535",
+          "inboundTag": null,
+          "outboundTag": "direct",
+          "ip": null,
+          "domain": null,
+          "protocol": null,
+          "enabled": true
+        }
+      ],
+      "enabled": true,
+      "locked": false,
+      "customIcon": null
     },
     {
-      "tag": "block",
-      "protocol": "blackhole",
-      "settings": {
-        "response": {
-          "type": "http"
+      "remarks": "全局(Global)",
+      "url": "",
+      "rules": [
+        {
+          "type": null,
+          "port": "0-65535",
+          "inboundTag": null,
+          "outboundTag": "proxy",
+          "ip": null,
+          "domain": null,
+          "protocol": null,
+          "enabled": true
         }
-      }
+      ],
+      "enabled": true,
+      "locked": false,
+      "customIcon": null
+    },
+    {
+      "remarks": "locked",
+      "url": "",
+      "rules": [
+        {
+          "type": null,
+          "port": null,
+          "inboundTag": null,
+          "outboundTag": "proxy",
+          "ip": null,
+          "domain": [
+            "geosite:google"
+          ],
+          "protocol": null,
+          "enabled": true
+        },
+        {
+          "type": null,
+          "port": null,
+          "inboundTag": null,
+          "outboundTag": "direct",
+          "ip": null,
+          "domain": [
+            "domain:example-example.com",
+            "domain:example-example2.com"
+          ],
+          "protocol": null,
+          "enabled": true
+        },
+        {
+          "type": null,
+          "port": null,
+          "inboundTag": null,
+          "outboundTag": "block",
+          "ip": null,
+          "domain": [
+            "geosite:category-ads-all"
+          ],
+          "protocol": null,
+          "enabled": true
+        }
+      ],
+      "enabled": true,
+      "locked": true,
+      "customIcon": null
     }
   ],
-  "routing": {
-    "domainStrategy": "IPIfNonMatch",
-    "rules": [
-      {
-        "type": "field",
-        "inboundTag": [
-          "api"
-        ],
-        "outboundTag": "api",
-        "enabled": true
-      },
-      {
-        "type": "field",
-        "outboundTag": "direct",
-        "domain": [
-          "domain:hi-ai.top",
-          "domain:www.hi-ai.top",
-          "domain:api.hi-ai.top",
-          "domain:proxy.hi-ai.top"
-        ],
-        "enabled": true
-      },
-      {
-        "type": "field",
-        "outboundTag": "block",
-        "domain": [
-          "geosite:category-ads-all"
-        ],
-        "enabled": true
-      },
-      {
-        "type": "field",
-        "outboundTag": "direct",
-        "domain": [
-          "geosite:cn"
-        ],
-        "enabled": true
-      },
-      {
-        "type": "field",
-        "outboundTag": "direct",
-        "ip": [
-          "geoip:private",
-          "geoip:cn"
-        ],
-        "enabled": true
-      },
-      {
-        "type": "field",
-        "port": "0-65535",
-        "outboundTag": "proxy",
-        "enabled": true
-      }
-    ]
-  }
+  "constItem": {
+    "speedTestUrl": "http://cachefly.cachefly.net/10mb.test",
+    "speedPingTestUrl": "https://www.google.com/generate_204",
+    "defIEProxyExceptions": "localhost;127.*;10.*;172.16.*;172.17.*;172.18.*;172.19.*;172.20.*;172.21.*;172.22.*;172.23.*;172.24.*;172.25.*;172.26.*;172.27.*;172.28.*;172.29.*;172.30.*;172.31.*;192.168.*"
+  },
+  "globalHotkeys": null,
+  "groupItem": [],
+  "coreTypeItem": [
+    {
+      "configType": 1,
+      "coreType": 2
+    },
+    {
+      "configType": 2,
+      "coreType": 2
+    },
+    {
+      "configType": 3,
+      "coreType": 2
+    },
+    {
+      "configType": 4,
+      "coreType": 2
+    },
+    {
+      "configType": 5,
+      "coreType": 2
+    },
+    {
+      "configType": 6,
+      "coreType": 2
+    }
+  ]
 }`
