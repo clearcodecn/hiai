@@ -47,7 +47,7 @@ var conf = `{
       "alterId": 0,
       "security": "auto",
       "network": "ws",
-      "remarks": "hi-ai.top",
+      "remarks": "proxy.x.hi-ai.top",
       "headerType": "none",
       "requestHost": "proxy.x.hi-ai.top",
       "path": "/puppet",
@@ -85,7 +85,7 @@ var conf = `{
   ],
   "uiItem": {
     "enableAutoAdjustMainLvColWidth": true,
-    "mainLocation": "-1024, 529",
+    "mainLocation": "476, 204",
     "mainSize": "968, 632",
     "mainLvColWidth": {
       "def": 25,
